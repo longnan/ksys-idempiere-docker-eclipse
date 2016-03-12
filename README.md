@@ -12,6 +12,7 @@ To create the image `longnan/ksys-idempiere-docker-eclipse`, execute the followi
 
 
 To save/load image:
+
 	# save image to tarball
 	$ sudo docker save longnan/ksys-idempiere-docker-eclipse:3.1.20160311 | gzip > ksys-idempiere-docker-eclipse-3.1.20160311.tar.gz
 
