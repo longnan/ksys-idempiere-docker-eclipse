@@ -61,7 +61,7 @@ To SSH to container:
 	ssh -i insecure_key root@$(docker inspect -f "{{ .NetworkSettings.IPAddress }}" ksys-idempiere-eclipse)
 
 	# sftp back to docker host for download & upload:
-	sftp ksys@docker-host-ip
+	sftp user@docker-host-ip
 
 Other Packages
 ----
