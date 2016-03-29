@@ -13,6 +13,10 @@ if [ "$1" = "debug" ]; then
   DEBUG="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=4554,server=y,suspend=n"
 fi
 
+if [ "$KSYS_DEBUG" = "true" ]; then
+  DEBUG="-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=4554,server=y,suspend=n"
+fi 
+
 echo ===================================
 echo Starting iDempiere-KSYS Server
 echo ===================================

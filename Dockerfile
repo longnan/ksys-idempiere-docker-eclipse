@@ -63,7 +63,7 @@ RUN /usr/sbin/enable_insecure_key
 # Install unzip (needed) and postgresql-client (optional)
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip pwgen expect
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes postgresql-client-9.3
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes postgresql-client-9.3
 
 # Install iDempiere-KSYS Home
 RUN unzip -d /opt /tmp/ksys/idempiereServer.gtk.linux.x86_64.zip

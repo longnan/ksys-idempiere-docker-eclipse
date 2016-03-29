@@ -37,6 +37,9 @@ To run the image:
 	docker run -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319
 	docker logs -f ksys-idempiere-eclipse
 
+	# run ksys-idempiere-eclipse in debug mode
+	docker run --env KSYS_DEBUG='true' -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 -p 4554:4554 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319
+
 To stop the container:
 
 	docker stop ksys-idempiere-eclipse
