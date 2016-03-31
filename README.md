@@ -66,6 +66,11 @@ To SSH to container:
 	# sftp back to docker host for download & upload:
 	sftp user@docker-host-ip
 
+To Shell to container:
+
+	# For debugging and maintenance purposes you may want access the containers shell. 
+	docker exec -it ksys-idempiere-eclipse bash
+
 Other Packages
 ----
 The following packages are needed to build docker image, but too big to be committed to github
