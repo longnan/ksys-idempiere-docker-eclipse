@@ -24,7 +24,7 @@
 
         <Set name="host"><Property name="jetty.host" default="0.0.0.0" /></Set>
         <Set name="port"><Property name="ssl.port" default="8443" /></Set>
-        <Set name="idleTimeout"><Property name="ssl.timeout" default="30000"/></Set>
+        <Set name="idleTimeout"><Property name="ssl.timeout" default="300000"/></Set>
         <Set name="soLingerTime"><Property name="ssl.soLingerTime" default="-1"/></Set>
         <Set name="acceptorPriorityDelta"><Property name="ssl.acceptorPriorityDelta" default="0"/></Set>
         <Set name="selectorPriorityDelta"><Property name="ssl.selectorPriorityDelta" default="0"/></Set>
@@ -36,11 +36,11 @@
   <!-- Create a TLS (SSL) Context Factory  for later reuse           -->
   <!-- ============================================================= -->
   <New id="sslContextFactory" class="org.eclipse.jetty.util.ssl.SslContextFactory">
-    <Set name="CertAlias">idempiere</Set>
-    <Set name="KeyStorePath">/opt/idempiere.gtk.linux.x86_64/idempiere-server/jettyhome/etc/keystore</Set>
-    <Set name="KeyStorePassword"><Property name="jetty.keystore.password" default="myPassword"/></Set>
-    <Set name="KeyManagerPassword"><Property name="jetty.keymanager.password" default="myPassword"/></Set>
-    <Set name="TrustStorePath">/opt/idempiere.gtk.linux.x86_64/idempiere-server/jettyhome/etc/keystore</Set>
+    <Set name="CertAlias">ksys-idempiere</Set>
+    <Set name="KeyStorePath">/opt/idempiere.gtk.linux.x86_64/idempiere-server/jettyhome/etc/ksys-demo-keystore</Set>
+    <Set name="KeyStorePassword"><Property name="jetty.keystore.password" default="P@ssw0rd"/></Set>
+    <Set name="KeyManagerPassword"><Property name="jetty.keymanager.password" default="P@ssw0rd"/></Set>
+    <Set name="TrustStorePath">/opt/idempiere.gtk.linux.x86_64/idempiere-server/jettyhome/etc/ksys-demo-keystore</Set>
     <Set name="TrustStorePassword"><Property name="jetty.truststore.password" default="myPassword"/></Set>
     <Set name="EndpointIdentificationAlgorithm"></Set>
     <Set name="NeedClientAuth"><Property name="jetty.ssl.needClientAuth" default="false"/></Set>
