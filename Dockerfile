@@ -4,7 +4,7 @@
 # https://github.com/longnan/ksys-idempiere-docker-eclipse
 #
 
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.19
 MAINTAINER Ken Longnan <ken.longnan@gmail.com>
 
 # Make default locale
@@ -34,7 +34,7 @@ RUN echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe mul
 ADD ksys /tmp/ksys
 		 
 # Install oracle JDK 8 (offline model)
-ENV JDK8_FILE jdk-8u74-linux-x64.tar.gz
+ENV JDK8_FILE jdk-8u92-linux-x64.tar.gz
 RUN mkdir -p /usr/lib/jvm/jdk1.8.0/;
 RUN tar --strip-components=1 -C /usr/lib/jvm/jdk1.8.0 -xzvf /tmp/ksys/$JDK8_FILE;
 RUN update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0/bin/java" 1
@@ -47,13 +47,13 @@ RUN rm /tmp/ksys/$JDK8_FILE
 ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0/
 ENV PATH $JAVA_HOME/bin:$PATH
 # Minimum memory for the JVM
-ENV JAVA_MIN_MEM 256M
+#ENV JAVA_MIN_MEM 256M
 # Maximum memory for the JVM
-ENV JAVA_MAX_MEM 1024M
+#ENV JAVA_MAX_MEM 1024M
 # Minimum perm memory for the JVM
-ENV JAVA_PERM_MEM 128M
+#ENV JAVA_PERM_MEM 128M
 # Maximum memory for the JVM
-ENV JAVA_MAX_PERM_MEM 256M
+#ENV JAVA_MAX_PERM_MEM 256M
 
 # Enabling SSH
 RUN rm -f /etc/service/sshd/down
@@ -63,7 +63,7 @@ RUN /usr/sbin/enable_insecure_key
 # Install unzip (needed) and postgresql-client (optional)
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip pwgen expect
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes postgresql-client-9.3
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes postgresql-client-9.4
 
 # Install iDempiere-KSYS Home
 RUN unzip -d /opt /tmp/ksys/idempiereServer.gtk.linux.x86_64.zip
@@ -76,7 +76,7 @@ RUN mv /tmp/ksys/hazelcast.xml ${IDEMPIERE_HOME}/hazelcast.xml
 RUN mv /tmp/ksys/jetty.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty.xml
 RUN mv /tmp/ksys/jetty-ssl.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-ssl.xml
 RUN mv /tmp/ksys/jetty-selector.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-selector.xml
-RUN mv /tmp/ksys/keystore ${IDEMPIERE_HOME}/jettyhome/etc/keystore
+RUN mv /tmp/ksys/ksys-demo-keystore ${IDEMPIERE_HOME}/jettyhome/etc/ksys-demo-keystore
 RUN mv /tmp/ksys/ksys-idempiere-server.sh ${IDEMPIERE_HOME}/ksys-idempiere-server.sh
 
 # Clean tmp/ksys
@@ -87,7 +87,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # set +x for start script
 RUN chmod 755 ${IDEMPIERE_HOME}/*.sh
 
-EXPOSE 8080 8443
+EXPOSE 8080 8443 4554
 
 # Add daemon to be run by runit.
 RUN mkdir /etc/service/ksys-idempiere-server

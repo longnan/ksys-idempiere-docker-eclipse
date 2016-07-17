@@ -8,16 +8,16 @@ Usage
 
 To create the image `longnan/ksys-idempiere-docker-eclipse`, execute the following command on the ksys-docker-idempiere-eclipse folder:
 
-	docker build --rm --force-rm -t longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319 .
+	docker build --rm --force-rm -t longnan/ksys-idempiere-docker-eclipse:3.1.0.20160716 .
 
 
 To save/load image:
 
 	# save image to tarball
-	$ sudo docker save longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319 | gzip > ksys-idempiere-docker-eclipse-3.1.0.20160319.tar.gz
+	$ sudo docker save longnan/ksys-idempiere-docker-eclipse:3.1.0.20160716 | gzip > ksys-idempiere-docker-eclipse-3.1.0.20160716.tar.gz
 
 	# load it back
-	$ sudo gzcat ksys-idempiere-docker-eclipse-3.1.0.20160319.tar.gz | docker load
+	$ sudo gzcat ksys-idempiere-docker-eclipse-3.1.0.20160716.tar.gz | docker load
 	
 Download prepared images from:
 
@@ -30,15 +30,15 @@ To run the image:
 	docker volume rm ksys-idempiere-pgsql-datastore
 	docker volume create --name ksys-idempiere-pgsql-datastore
 	docker volume inspect ksys-idempiere-pgsql-datastore
-	docker run -d --name="ksys-idempiere-pgsql" -v ksys-idempiere-pgsql-datastore:/data -p 5432:5432 -e PASS="postgres" longnan/ksys-idempiere-docker-pgsql:3.1.0.20160311
+	docker run -d --name="ksys-idempiere-pgsql" -v ksys-idempiere-pgsql-datastore:/data -p 5432:5432 -e PASS="postgres" longnan/ksys-idempiere-docker-pgsql:3.1.0.20160716
 	docker logs -f ksys-idempiere-pgsql
 	
 	# run ksys-idempiere-eclipse
-	docker run -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319
+	docker run -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160716
 	docker logs -f ksys-idempiere-eclipse
 
 	# run ksys-idempiere-eclipse in debug mode
-	docker run --env KSYS_DEBUG='true' -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 -p 4554:4554 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160319
+	docker run --env KSYS_DEBUG='true' -d -t --link ksys-idempiere-pgsql:idempiere-db --name="ksys-idempiere-eclipse" -p 80:8080 -p 443:8443 -p 4554:4554 longnan/ksys-idempiere-docker-eclipse:3.1.0.20160716
 
 To stop the container:
 
