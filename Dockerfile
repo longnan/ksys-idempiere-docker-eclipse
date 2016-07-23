@@ -74,8 +74,13 @@ RUN rm /tmp/ksys/idempiereServer.gtk.linux.x86_64.zip
 RUN mv /tmp/ksys/idempiere.properties ${IDEMPIERE_HOME}/idempiere.properties
 RUN mv /tmp/ksys/hazelcast.xml ${IDEMPIERE_HOME}/hazelcast.xml
 RUN mv /tmp/ksys/jetty.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty.xml
+RUN mv /tmp/ksys/jetty-alpn.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-alpn.xml
+RUN mv /tmp/ksys/jetty-deployer.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-deployer.xml
+RUN mv /tmp/ksys/jetty-http.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-http.xml
+RUN mv /tmp/ksys/jetty-http2.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-http2.xml
+RUN mv /tmp/ksys/jetty-https.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-https.xml
 RUN mv /tmp/ksys/jetty-ssl.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-ssl.xml
-RUN mv /tmp/ksys/jetty-selector.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-selector.xml
+RUN mv /tmp/ksys/jetty-ssl-context.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-ssl-context.xml
 RUN mv /tmp/ksys/ksys-demo-keystore ${IDEMPIERE_HOME}/jettyhome/etc/ksys-demo-keystore
 RUN mv /tmp/ksys/ksys-idempiere-server.sh ${IDEMPIERE_HOME}/ksys-idempiere-server.sh
 
