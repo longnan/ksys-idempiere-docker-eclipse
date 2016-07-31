@@ -34,7 +34,7 @@ RUN echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe mul
 ADD ksys /tmp/ksys
 		 
 # Install oracle JDK 8 (offline model)
-ENV JDK8_FILE jdk-8u92-linux-x64.tar.gz
+ENV JDK8_FILE jdk-8u102-linux-x64.tar.gz
 RUN mkdir -p /usr/lib/jvm/jdk1.8.0/;
 RUN tar --strip-components=1 -C /usr/lib/jvm/jdk1.8.0 -xzvf /tmp/ksys/$JDK8_FILE;
 RUN update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.8.0/bin/java" 1
@@ -60,10 +60,9 @@ RUN rm -f /etc/service/sshd/down
 # Enabling the insecure key permanently. In production environments, you should use your own keys.
 RUN /usr/sbin/enable_insecure_key
 
-# Install unzip (needed) and postgresql-client (optional)
+# Install unzip and other useful packages
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip pwgen expect
-#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes postgresql-client-9.4
 
 # Install iDempiere-KSYS Home
 RUN unzip -d /opt /tmp/ksys/idempiereServer.gtk.linux.x86_64.zip
@@ -79,10 +78,14 @@ RUN mv /tmp/ksys/jetty-deployer.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-deploy
 RUN mv /tmp/ksys/jetty-http.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-http.xml
 RUN mv /tmp/ksys/jetty-http2.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-http2.xml
 RUN mv /tmp/ksys/jetty-https.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-https.xml
+RUN mv /tmp/ksys/jetty-plus.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-plus.xml
+RUN mv /tmp/ksys/jetty-selector.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-selector.xml
 RUN mv /tmp/ksys/jetty-ssl.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-ssl.xml
 RUN mv /tmp/ksys/jetty-ssl-context.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-ssl-context.xml
+RUN mv /tmp/ksys/webdefault.xml ${IDEMPIERE_HOME}/jettyhome/etc/webdefault.xml
 RUN mv /tmp/ksys/ksys-demo-keystore ${IDEMPIERE_HOME}/jettyhome/etc/ksys-demo-keystore
 RUN mv /tmp/ksys/ksys-idempiere-server.sh ${IDEMPIERE_HOME}/ksys-idempiere-server.sh
+
 
 # Clean tmp/ksys
 RUN rm -rf /tmp/ksys
