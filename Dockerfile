@@ -98,6 +98,7 @@ RUN chmod 755 ${IDEMPIERE_HOME}/*.sh
 EXPOSE 8080 8443 4554
 
 # Add daemon to be run by runit.
+RUN chmod +x ${IDEMPIERE_HOME}/ksys-idempiere-server.sh
 RUN mkdir /etc/service/ksys-idempiere-server
 RUN ln -s /opt/idempiere.gtk.linux.x86_64/idempiere-server/ksys-idempiere-server.sh /etc/service/ksys-idempiere-server/run
 
