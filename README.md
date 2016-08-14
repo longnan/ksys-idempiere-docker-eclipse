@@ -51,8 +51,10 @@ To re-start the container from last stoppage:
 	docker start ksys-idempiere-eclipse
 
 To access iDempiere-KSYS web-ui:
-
-	http://docker-host-ip:80/webui
+	web-ui
+	http://docker-host-ip/webui
+	osgi console
+	http://docker-host-ip/osgi/system/console/bundles
 
 To SSH to container:
 

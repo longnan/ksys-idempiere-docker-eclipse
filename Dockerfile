@@ -71,7 +71,7 @@ RUN rm /tmp/ksys/idempiereServer.gtk.linux.x86_64.zip
 
 # Setup Environment for ksys-idempiere-server
 RUN mv /tmp/ksys/idempiere.properties ${IDEMPIERE_HOME}/idempiere.properties
-RUN mv /tmp/ksys/hazelcast.xml ${IDEMPIERE_HOME}/hazelcast.xml
+#RUN mv /tmp/ksys/hazelcast.xml ${IDEMPIERE_HOME}/hazelcast.xml
 RUN mv /tmp/ksys/jetty.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty.xml
 RUN mv /tmp/ksys/jetty-alpn.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-alpn.xml
 RUN mv /tmp/ksys/jetty-deployer.xml ${IDEMPIERE_HOME}/jettyhome/etc/jetty-deployer.xml
